@@ -3,11 +3,11 @@ function Footer()
 {
     let dateYear = new Date().getFullYear();
 
-    return (<footer className="page-footer blue darken-1">
+    return (<footer className="page-footer teal lighten-3">
     <div className="footer-copyright">
       <div className="container">
       © {dateYear} Copyright Text
-      <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+      <a className="grey-text text-lighten-4 right" href="#!">Reposiory</a>
       </div>
     </div>
   </footer>);
