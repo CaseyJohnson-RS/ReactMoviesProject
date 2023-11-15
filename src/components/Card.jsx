@@ -1,20 +1,26 @@
 function Card(props)
 {
-  const {imageURL, header, leftExp, rightExp} = props;
-
-  console.log(props);
+  const {Title, Year, Type, Poster} = props;
 
     return (<div className="card">
     <div className="card-image">
-      <img src={imageURL} alt="poster" />
+      <img 
+        src=
+        {
+          Poster === 'N/A' ?
+            "https://placehold.co/300x400?text=" + Title :
+            Poster
+        } 
+        alt="poster" 
+        />
     </div>
     <div className="card-content">
       <h5>
-        {header}
+        {Title}
         </h5>
       <p>
-        {leftExp}
-        <span className="right">{rightExp}</span>
+        {Year}
+        <span className="right">{Type}</span>
         </p>
     </div>
   </div>);
