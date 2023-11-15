@@ -1,6 +1,7 @@
 import React from 'react';
 import { Preloader } from '../components/Preloader';    
-import {CardGrid} from '../components/CardGrid';
+import { CardGrid } from '../components/CardGrid';
+import { Search } from '../components/Search';
 
 
 export class Main extends React.Component
@@ -10,29 +11,52 @@ export class Main extends React.Component
         super(props);
 
         this.state = {
-            Search: [], 
-            totalResults: 0
+            movies: [], 
+            totalResults: 0,
+            response: "",
+            error: ""
         }
     }
 
-    componentDidMount()
+    searchMovies = (searchRequest, filter) => 
     {
-        let request = 'http://www.omdbapi.com/?apikey=97e428bb&s=nemo';
+        let request = 'http://www.omdbapi.com/?apikey=97e428bb';
+        request += `&s=${searchRequest}`;
+        request += `&type=${filter}`;
+
+        this.setState({response: "Loading"});
 
         fetch(request)
             .then( response => response.json())
-            .then( json => this.setState({Search: json.Search, totalResults: +json.totalResults}) );
-        
+            .then( json => 
+                this.setState({
+                    movies: json.Search, 
+                    totalResults: +json.totalResults,
+                    response: json.Response,
+                    error: json.Error
+                })
+            );
     }
 
     render() {
-        const {Search} = this.state;
+        const {movies, response, error} = this.state;
 
         return (<main className="content">
-            {
-                Search ?
-                (<CardGrid movies={this.state.Search} />) :
-                (<Preloader />)
+            <Search cb={this.searchMovies} />
+            {  
+                response === 'Loading' ? (
+                    <Preloader />
+                ) : (
+                    response === 'False' ? (
+                        <h4>{error}</h4>
+                    ) : (
+                        (movies && movies.length) ? (
+                            <CardGrid movies={movies} />
+                        ) : (
+                            <h4>Enter your request...</h4>
+                        )
+                    )
+                )
             }
 
         </main>)

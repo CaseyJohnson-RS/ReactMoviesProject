@@ -36,3 +36,11 @@ nav {
 .card-content .right {
   float: right;
 }
+
+/* search */
+
+.search-btn {
+  position:absolute;
+  top: 0;
+  right: 1rem;
+}
