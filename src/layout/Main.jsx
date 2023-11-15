@@ -1,4 +1,5 @@
 import React from 'react';
+import { Preloader } from '../components/Preloader';    
 import {CardGrid} from '../components/CardGrid';
 
 
@@ -16,11 +17,12 @@ export class Main extends React.Component
 
     componentDidMount()
     {
-        let request = 'http://www.omdbapi.com/?apikey=97e428bb&s=start';
+        let request = 'http://www.omdbapi.com/?apikey=97e428bb&s=nemo';
 
         fetch(request)
             .then( response => response.json())
             .then( json => this.setState({Search: json.Search, totalResults: +json.totalResults}) );
+        
     }
 
     render() {
@@ -30,7 +32,7 @@ export class Main extends React.Component
             {
                 Search ?
                 (<CardGrid movies={this.state.Search} />) :
-                (<h3>Loading...</h3>)
+                (<Preloader />)
             }
 
         </main>)
