@@ -18,11 +18,17 @@ export class Main extends React.Component
         }
     }
 
-    searchMovies = (searchRequest, filter) => 
+    searchMovies = (searchRequest, type) => 
     {
+        if (searchRequest.length === 0)
+        {
+            this.setState({response: '', movies: []});
+            return;
+        }
+
         let request = 'http://www.omdbapi.com/?apikey=97e428bb';
         request += `&s=${searchRequest}`;
-        request += `&type=${filter}`;
+        request += type === 'all' ? '' : `&type=${type}`;
 
         this.setState({response: "Loading"});
 
