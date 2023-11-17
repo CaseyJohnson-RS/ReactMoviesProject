@@ -27,7 +27,7 @@ export class Main extends React.Component
             return;
         }
 
-        let request = 'http://www.omdbapi.com/?apikey=' + API_KEY;
+        let request = 'https://www.omdbapi.com/?apikey=' + API_KEY;
         request += `&s=${searchRequest}`;
         request += type === 'all' ? '' : `&type=${type}`;
 
