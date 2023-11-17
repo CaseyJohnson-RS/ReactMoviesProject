@@ -3,6 +3,7 @@ import { Preloader } from '../components/Preloader';
 import { CardGrid } from '../components/CardGrid';
 import { Search } from '../components/Search';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export class Main extends React.Component
 {
@@ -26,7 +27,7 @@ export class Main extends React.Component
             return;
         }
 
-        let request = 'http://www.omdbapi.com/?apikey=97e428bb';
+        let request = 'http://www.omdbapi.com/?apikey=' + API_KEY;
         request += `&s=${searchRequest}`;
         request += type === 'all' ? '' : `&type=${type}`;
 
