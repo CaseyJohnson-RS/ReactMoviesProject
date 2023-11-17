@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# React Movies Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a test SPA for searching movies. Published at [GitHub Pages](https://caseyjohnson-rs.github.io/ReactMoviesProject/).
 
 ## Available Scripts
 

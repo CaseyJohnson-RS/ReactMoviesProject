@@ -49,13 +49,13 @@ export class Main extends React.Component
         const {movies, response, error} = this.state;
 
         return (<main className="content">
-            <Search cb={this.searchMovies} />
+            <Search searchMovies={this.searchMovies} />
             {  
                 response === 'Loading' ? (
                     <Preloader />
                 ) : (
                     response === 'False' ? (
-                        <h4>{error}</h4>
+                        <h4>Something went wrong...</h4>
                     ) : (
                         (movies && movies.length) ? (
                             <CardGrid movies={movies} />

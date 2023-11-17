@@ -14,7 +14,7 @@ export class Search extends React.Component
 
     searchMovies = () =>
     {
-        this.props.cb(this.state.search, this.state.type);
+        this.props.searchMovies(this.state.search, this.state.type);
     }
 
     handleKey = (event) => {
@@ -25,9 +25,9 @@ export class Search extends React.Component
 
     handleFilter = (event) => {
         this.setState( 
-            () => ({type: event.target.dataset.type }),
-            () => { this.searchMovies(); }
-            );
+            () => ({type: event.target.dataset.type }), // Обновления стейта в виде функции
+            () => { this.searchMovies(); }              // После которой можно в виде аргумента передать другую функцию
+            );                                          // Которая выполниться после обновления стейта
     };
 
     render()
